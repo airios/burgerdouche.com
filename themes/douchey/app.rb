@@ -25,24 +25,13 @@ module Nesta
       set :sass, Compass.sass_engine_options
     end
 
-    get '/css/layout.css' do
+    get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'
-      sass :layout
+      cache sass(params[:sheet].to_sym)
     end
 
     helpers do
       # Add new helpers here.
-      #get("/css/:name.css") do
-       # compass :one_stylesheet
-      #end
-      
-      #get '/css/:sheet.css' do
-       # puts 'In helper...'
-        #content_type 'text/css', :charset => 'utf-8'
-        #cache sass(params[:sheet].to_sym)
-      #end
-
-      
     end
 
     # Add new routes here.
