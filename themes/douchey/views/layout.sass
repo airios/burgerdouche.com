@@ -1,0 +1,309 @@
+@import "compass/reset"
+@import "compass/utilities/general/clearfix"
+@import "compass/css3"
+@import "grid"
+@import "text"
+
+$ninesixty_columns: 12
+$transition-time: 0.4s
+$transition-func: ease-in-out
+
+/*Colors*/
+$white: #FFF
+$beige: #e9e9d2
+$green: #83b26f
+$dark-gray: #3d3d3d
+$light-gray: #545454
+$bright-green: #83b26f
+$dark-green: #749e62
+
+/*Fonts*/
+$base: Arial,"Helvetica Neue",sans-serif
+$arvo: "Arvo",sans-serif
+$ubuntu: 'Ubuntu',Helvetica,Arial,sans-serif
+$vollkorn: 'Vollkorn',Georgia,Times,serif
+$ptsans: 'PTSans',Helvetica,Arial,sans-serif
+
+/**/
+
+body
+	background: image_url("bg-horiz.png") repeat-x 0 0
+
+
+.clear
+	clear: both
+
+
+#container,
+#footer
+	@include grid-container
+	@include clearfix
+
+
+#header,
+#navigation,
+#content
+	@include grid(12)
+
+#content
+	@include clearfix
+
+
+#header
+	#header-link
+		@include grid(6)
+		@include alpha
+	
+	#header-link h1
+		text-indent: -9999px
+		margin: 0
+	
+	#header-link h1 a
+		width: 330px
+		height: 108px
+		display: block
+		margin: 0
+		background: image_url("hdr-logo.png") no-repeat 0 0
+	
+	#search
+		@include grid(6)
+		@include omega
+		
+		width: 180px
+		margin-top: 26px
+		padding: 7px 0 0 35px
+		
+		#search-form
+			width: 360px
+			padding: 0 20px 0 30px
+			position: relative
+		
+		#search-formspan
+			background: image_url("search-bg.png") no-repeat left top
+			height: 44px
+			display: block
+			position: absolute
+			top: 0
+		
+		#search-form .left
+			width: 30px
+			left: 0
+
+		#search-form .right
+			width: 20px
+			right: 0
+			background-position: right top
+		
+		#search-form input
+			background: image_url("search-bg.png") repeat-x left bottom
+			color: $light-gray
+			font-family: $base
+			font-size: 14px
+			height: 35px
+			padding: 6px 0 4px
+			border: 0
+			width: 360px
+			display: block
+			line-height: 24px
+		
+		#search-form input:focus
+			color: #444
+		
+		#search-results
+			position: absolute
+			text-align: left
+			width: 375px
+			right: 8px
+			margin-top: 3px
+			padding: 10px
+			font-family: $base
+
+			@include box-shadow(rgba(0,0,0,.08),0,0,0,5px)
+			@include border-radius(15px)
+
+			background: #FFF
+			border: solid 1px #E6E6E6
+			border: solid 1px rgba(0,0,0,.3)
+			
+			h1,
+			h2,
+			h3,
+			h4,
+			h5
+				font-family: $ptsans	
+				font-size: 18px
+				color: $dark-gray
+				line-height: 20px
+				margin-bottom: 5px
+			
+			
+			h3 a
+				color: $bright-green
+			
+			
+			h3 a:hover
+				color: $dark-green
+			
+			h3, p
+				color: $dark-gray
+
+			p
+				font-size: 14px
+			
+			p a
+				color: $bright-green
+				
+			p a:hover
+				color: $dark-green
+
+			.archives
+				margin: 10px0
+				font-weight: bold
+				font-size: 20px
+			
+			.archives a
+				color: $bright-green
+			
+			.archives a:hover
+				color: $dark-green
+			
+		#search-results .search-results-item
+			margin-bottom: 10px
+			border-bottom: 1px solid #CCC
+			padding: 5px
+	
+#navigation
+	margin: 4px 0 0 0
+	padding: 0
+	font-family: $arvo
+	font-size: 18px
+	font-style: normal
+	font-weight: normal
+	
+	ul
+		list-style-type: none
+	
+	ul li,
+	ul li a
+		color: $light-gray
+		text-decoration: none
+		display: block
+		float: left
+		padding: 10px 15px
+		@include border-radius(20px)
+		border: 1px solid #fbfbf8
+		@include transition(all,$transition-time,$transition-func)
+	
+	
+	ul li a:hover, ul li a:focus
+		background: $white
+		border: 1px solid $beige
+	
+#content
+	margin-top: 30px
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5
+		font-family: $ptsans	
+		color: $dark-gray
+	
+		
+	#left
+		@include grid(9)
+		@include alpha
+		
+		.entry
+			margin-bottom: 40px
+		
+		
+		.entry h1
+			font-weight: bold
+			font-size: 44px
+			letter-spacing: -0.04em
+			line-height: 48px
+			margin-bottom: 5px
+		
+
+		.entry h1 a
+			text-decoration: none
+		
+		
+		.entry h1 a:hover
+			color: $light-gray
+		
+
+		.entry h2
+			font-size: 24px
+			color: $bright-green
+		
+
+		.entry h2 a, .entry h2 a:hover
+			color: $bright-green
+			text-decoration: none
+		
+		
+		.entry h2 a:hover
+			color: $dark-green
+
+		.entry h3
+			font-size: 22px
+
+		.entry h1,
+		.entry h1 a,
+		.entry h3,
+		.entry p
+			color: $dark-gray
+
+		.entry p
+			font-size: 16px
+		
+		.entry p a
+			color: $bright-green
+		
+		.entry p a:hover
+			color: $dark-green
+		
+		.entry .more
+			margin: 10px0
+			font-weight: bold
+			font-size: 20px
+	
+	#right
+		@include grid(3)
+		@include omega
+		
+		ul
+			list-style-type: none
+			font-size: 14px
+		
+		ul li
+			margin: 5px
+		
+		ul li a
+			color: $bright-green
+			text-decoration: none
+		
+		ul li a:hover
+			color: $dark-green
+
+#archived-content
+	.archive-year
+		margin-left: 10px
+	
+	.archive-month
+		margin-left: 20px
+	
+	.archive-entry
+		list-style-type: none
+		font-size: 16px
+		
+		li a
+			text-decoration: none
+			color: $bright-green
+		
+		li a:hover
+			color: $dark-green
+	

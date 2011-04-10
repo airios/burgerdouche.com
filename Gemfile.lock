@@ -2,6 +2,10 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.7)
+    compass (0.10.6)
+      haml (>= 3.0.4)
+    compass-960-plugin (0.10.2)
+      compass (>= 0.10.0)
     haml (3.0.25)
     maruku (0.6.0)
       syntax (>= 1.0.0)
@@ -24,4 +28,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass
+  compass-960-plugin
   nesta (= 0.9.4)
