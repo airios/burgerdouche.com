@@ -1,4 +1,20 @@
-%header(role="banner")
-  %hgroup
-    %h1= @heading
-    %h2= @subtitle
+#header-link
+  %h1
+    %a(href=base_url title=@title)
+#search
+  %form#search-form(method="GET")
+    %span.left
+    %input#query(type="text" name="query" value="Search")
+    %span.right
+.clear
+#navigation
+  %ul
+    %li.about
+      %a(href="#{base_url}/about/" title="About") About
+    %li.articles
+      %a(href="#{base_url}/articles/" title="Articles") Articles
+    %li.authors
+      %a(href="#{base_url}/authors/" title="Authors") Authors
+    %li.contact
+      %a(href="#{base_url}/contact/" title="Contact") Contact
+.clear

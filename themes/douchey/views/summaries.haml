@@ -1,15 +1,21 @@
 - unless pages.empty?
-  %ol
-    - pages.each do |page|
-      %li
-        %article
-          %header
-            %h1
-              %a(href="#{page.abspath}")= page.heading
-          - if page.summary.nil? || page.summary.empty?
-            ~ page.body
-          - else
-            ~ page.summary
-            %p.read_more
-              %a(href="#{page.abspath}")= page.read_more
-          = haml :page_meta, :layout => false, :locals => { :page => page }
+  - pages.each do |page|
+    .entry
+      %h1
+        %a(href="#{page.abspath}")= page.heading
+      %h2 
+        Posted
+        - if page.date
+          on 
+          = format_date(page.date)
+        -# - if page.author
+        -#   by
+        -#   ~ page.author
+      
+      - if page.summary.nil? || page.summary.empty?
+        ~ page.body
+      - else
+        ~ page.summary
+        %p.more
+          %a(href="#{page.abspath}")= page.read_more
+      = haml :page_meta, :layout => false, :locals => { :page => page }

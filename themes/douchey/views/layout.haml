@@ -9,7 +9,7 @@
     %title= @title
     <!--[if ! lte IE 6]><!-->
     %link(href="http://fonts.googleapis.com/css?family=PT+Sans" media="screen" rel="stylesheet")
-    %link(href="http//fonts.googleapis.com/css?family=Arvo:regular,italic,bold,bolditalic&subset=latin" media="screen" rel="stylesheet")
+    %link(href="http://fonts.googleapis.com/css?family=Arvo:regular,italic,bold,bolditalic&subset=latin" media="screen" rel="stylesheet")
     %link(href="/css/layout.css" media="screen" rel="stylesheet")
     <!--<![endif]-->
     /[if lte IE 6]
@@ -21,6 +21,12 @@
     = haml :analytics, :layout => false
   %body
     #container
-      = haml :header, :layout => false
-      = yield
+      #header
+        = haml :header, :layout => false
+      #content
+        #left
+          = yield
+        #right
+          = haml :sidebar, :layout => false
+    #footer
       = haml :footer, :layout => false

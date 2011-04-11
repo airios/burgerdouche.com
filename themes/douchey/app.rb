@@ -13,12 +13,18 @@ module Nesta
     #
     # Put your assets in themes/douchey/public/douchey.
     #
-    # use Rack::Static, :urls => ["/douchey"], :root => "themes/douchey/public"
+    use Rack::Static, :urls => ["/douchey"], :root => "themes/douchey/public"
         
     configure do
+            
       Compass.configuration do |config|
         config.project_path = File.dirname(__FILE__)
         config.sass_dir = 'views'
+        config.environment = :production
+        config.relative_assets = true
+        config.http_path = "/"
+        config.http_images_path = "../douchey/images"
+        config.images_dir = "../douchey/images"
       end
 
       set :haml, { :format => :html5 }
