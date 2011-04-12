@@ -10,11 +10,25 @@ subtitle: ""
 #
 # http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.feed
 #
-# author:
-#   name: Your Name
-#   uri: http://yourhomepage.com
-#   email: you@yourdomain.com
+author:
+   name: The Burger Douche Team
+   uri: http://burgerdouche.com
+   email: team@burgerdouche.com
 
+authors:
+-   name: "Abel Rios"
+    uri: "http://burgerdouche.com/authors/abel-rios/"
+    email: "arios@burgerdouche.com"
+    adsenseid: "pub-3376989179721318"
+-   name: "Jason Ragsdale"
+    uri: "http://burgerdouche.com/authors/jason-ragsdale/"
+    email: "jrags@burgerdouche.com"
+    adsenseid: "jasonid"
+-   name: "John Van Horn"
+    uri: "http://burgerdouche.com/authors/john-van-horn/"
+    email: "jvh@burgerdouche.com"
+    adsenseid: "jvhid"
+    
 # You can stick with the default look and feel, or use a theme. Themes are
 # easy to create or install, and live inside the themes directory. You
 # can also use scripts/theme to install them.
