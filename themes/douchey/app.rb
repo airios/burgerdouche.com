@@ -43,6 +43,7 @@ module Nesta
         @menu_items = Nesta::Menu.for_path('/')
         @site_title = Nesta::Config.title
         @authors = Nesta::Config.authors
+        @search_api_key = Nesta::Config.google_search_api_key
         set_from_config(:title, :subtitle, :google_analytics_code)
         @heading = @title
       end
@@ -74,6 +75,10 @@ module Nesta
   class Config
     def self.authors
       authors = from_yaml("authors")
+    end
+    
+    def self.google_search_api_key
+      from_yaml("google_search_api_key")
     end
   end
   

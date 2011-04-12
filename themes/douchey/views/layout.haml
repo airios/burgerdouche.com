@@ -19,6 +19,11 @@
     = local_stylesheet_link_tag('local')
     %link(href="/articles.xml" rel="alternate" type="application/atom+xml")
     = haml :analytics, :layout => false
+    %script(src="http://code.jquery.com/jquery-latest.js")
+    - if @search_api_key
+      %script(src="http://www.google.com/jsapi?key=#{@search_api_key}")
+    = haml :search_init, :layout => false
+    
   %body
     #container
       #header
@@ -30,3 +35,5 @@
           = haml :sidebar, :layout => false
     #footer
       = haml :footer, :layout => false
+
+  = haml :js_raw, :layout => false

@@ -1,0 +1,69 @@
+:plain
+  <script language="Javascript" type="text/javascript">
+    var webSearch;
+
+    $( function(){
+      webSearch = new google.search.WebSearch();
+        webSearch.setSearchCompleteCallback( this, webSearchComplete, [webSearch] );
+        webSearch.setSiteRestriction( 'http://burgerdouche.com' );
+
+      var hash = window.location.hash;
+      if( hash != "" && hash.length > 0 ) 
+      {
+        if( hash.substr( 0,3 ) == '#q=' ) 
+        {
+          var query = hash.substr( 3, hash.length-3 );
+          search( query );
+        }
+      }
+    });
+
+    function webSearchComplete ( searcher, searchNum ) 
+    {
+        var c = document.getElementById( 'search-results' );
+        c.innerHTML = '';
+
+        var results = searcher.results;
+
+        var res = document.createElement( 'div' );
+        res.id = 'search-results-set';
+
+        for ( var i = 0; i < results.length; i++ ) 
+        {
+          var result = results[ i ];
+
+          var resultHTML = '<div class="search-results-item">';
+          resultHTML += 	'<h3><a href="' + result.unescapedUrl + '"><b>';
+          resultHTML +=   result.titleNoFormatting + '</b></a></h3>';
+          resultHTML +=   '<p>' + result.content + '</p>';
+          resultHTML += 	'<div/>';
+          res.innerHTML += resultHTML;
+        }
+
+        res.innerHTML += '<p class="archives"><a href="#{base_url}/articles/">View Archives</a></p>';
+        c.appendChild( res );
+    }
+
+    function search( query ) 
+    {	
+      if( query.length > 0 ) 
+      {
+        $( "#search-results" ).show();
+        window.location.hash = "q=" + query;
+      } else {
+        $( "#search-results" ).hide();
+      }
+        webSearch.execute( query );
+    }
+		
+    $( '#query' ).keyup( function(){
+      var query = $( this ).val();
+      search( query );
+    });
+
+    $( '#query' ).blur( function(){
+      $( '#search-results' ).hide();
+    });
+
+    $( "#search-results" ).hide();
+  </script>

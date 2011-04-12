@@ -67,6 +67,7 @@ content: content-demo
 #     to your own server.
 #
 # google_analytics_code: "UA-???????-?"
+google_search_api_key: "ABQIAAAAYx7scRXgYgzCu7S3xmgoghTeD3bnoE1X8zbCZ8Dbpnm8N14k2RSK4Wt4CeyvsSrK20Y0pJeUt6RDng"
 
 # Overriding "cache" and "content" in production is recommended if you're
 # deploying Nesta to your own server (but see the deployment documentation
