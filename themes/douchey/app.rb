@@ -42,6 +42,7 @@ module Nesta
       def set_common_variables
         @menu_items = Nesta::Menu.for_path('/')
         @site_title = Nesta::Config.title
+        @default_author = Nesta::Config.author
         @authors = Nesta::Config.authors
         @search_api_key = Nesta::Config.google_search_api_key
         set_from_config(:title, :subtitle, :google_analytics_code)
@@ -61,11 +62,16 @@ module Nesta
       end
       
       def get_author_data_by_key(author,key)
+        item = String.new
         @authors.each do |a|
           if a[ "name" ].to_s.downcase == author.downcase
-            return a[ key ]
+            item = a[ key ]
           end
         end
+        if item.empty?
+          item = @default_author[ key ]
+        end
+        item
       end
     end
    
