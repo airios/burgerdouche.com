@@ -73,6 +73,10 @@ module Nesta
         end
         item
       end
+      
+      def get_article_categories
+        @page.find_articles_with_categories
+      end
     end
    
     # Add new routes here.
@@ -85,6 +89,22 @@ module Nesta
     
     def self.google_search_api_key
       from_yaml("google_search_api_key")
+    end
+    
+    def self.article_path(basename = nil)
+      get_path(File.join(page_path, "articles"), basename)
+    end
+  end
+  
+  class Page
+    def find_articles_with_categories
+       items = []
+       all = Page.find_articles.select{ |a| !a.categories.empty? }.each do |x|
+         x.categories.each do |i|
+           items.push i
+         end
+       end
+       items
     end
   end
   

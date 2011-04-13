@@ -10,11 +10,14 @@ subtitle: ""
 #
 # http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.feed
 #
+
+# Default Author
 author:
    name: The Burger Douche Team
    uri: http://burgerdouche.com
    email: team@burgerdouche.com
 
+# Author listing
 authors:
 -   name: "Abel Rios"
     uri: "http://burgerdouche.com/authors/abel-rios/"

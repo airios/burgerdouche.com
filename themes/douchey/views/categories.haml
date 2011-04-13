@@ -1,4 +1,6 @@
-- if ! @menu_items.empty?
-  %nav.categories
-    %h2 Articles by category
-    - display_menu(@menu_items, :class => "menu")
+- unless get_article_categories.empty?
+  %h2 Categories
+  %ul
+    - get_article_categories.each do |page|
+      %li
+        %a(href="#{page.abspath}")= page.heading
