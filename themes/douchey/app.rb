@@ -75,8 +75,17 @@ module Nesta
       end
       
       def get_article_categories
-        @page.find_articles_with_categories
+        @article_categories = @page.find_articles_with_categories
       end
+      
+      def get_archived_content
+        @archived_pages = @page.find_archived_content
+      end
+      
+      def format_date(date)
+        date.strftime('%B %d, %Y')
+      end
+      
     end
    
     # Add new routes here.
@@ -94,6 +103,7 @@ module Nesta
     def self.article_path(basename = nil)
       get_path(File.join(page_path, "articles"), basename)
     end
+    
   end
   
   class Page
@@ -105,6 +115,28 @@ module Nesta
          end
        end
        items
+    end
+    
+    def find_archived_content
+      coll = {}
+      Page.find_articles.reverse.each do |article|
+        year, month, day = article.date.year, article.date.month, article.date.day
+        
+        unless coll.key? year
+          coll[ year ] = {}
+        end
+        
+        unless coll[ year ].key? month
+          coll[ year ][ month ] = {}
+        end
+        
+        unless coll[ year ][ month ].key? day
+          coll[ year ][ month ][ day ] = []
+        end
+        
+        coll[ year ][ month ][ day ] += [ article ]
+      end
+      coll
     end
   end
   
