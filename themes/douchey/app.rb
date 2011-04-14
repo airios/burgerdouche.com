@@ -86,6 +86,10 @@ module Nesta
         date.strftime('%B %d, %Y')
       end
       
+      def format_month( month )
+        m = Date::MONTHNAMES[ month ]
+      end
+      
     end
    
     # Add new routes here.
