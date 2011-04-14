@@ -23,14 +23,17 @@ authors:
     uri: "http://burgerdouche.com/authors/abel-rios/"
     email: "arios@burgerdouche.com"
     adsenseid: "pub-3376989179721318"
+    twitter_id: "airios"
 -   name: "Jason Ragsdale"
     uri: "http://burgerdouche.com/authors/jason-ragsdale/"
     email: "jrags@burgerdouche.com"
     adsenseid: "jasonid"
+    twitter_id: "jasrags"
 -   name: "John Van Horn"
     uri: "http://burgerdouche.com/authors/john-van-horn/"
     email: "jvh@burgerdouche.com"
     adsenseid: "jvhid"
+    twitter_id: "johnvh"
     
 # You can stick with the default look and feel, or use a theme. Themes are
 # easy to create or install, and live inside the themes directory. You
@@ -69,7 +72,9 @@ content: content-demo
 #     scroll down a bit to set it in production even if you're not deploying
 #     to your own server.
 #
-# google_analytics_code: "UA-???????-?"
+google_analytics_code: "UA-22724172-1"
+
+# google_search_api_key
 google_search_api_key: "ABQIAAAAYx7scRXgYgzCu7S3xmgoghTeD3bnoE1X8zbCZ8Dbpnm8N14k2RSK4Wt4CeyvsSrK20Y0pJeUt6RDng"
 
 # Overriding "cache" and "content" in production is recommended if you're

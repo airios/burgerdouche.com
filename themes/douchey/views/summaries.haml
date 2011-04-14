@@ -14,7 +14,7 @@
             %a(href="#{author_uri(page.author)}")= page.author
           - else
             ~ page.author
-      
+
       - if page.summary.nil? || page.summary.empty?
         ~ page.body
       - else
