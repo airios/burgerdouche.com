@@ -90,6 +90,52 @@ module Nesta
         m = Date::MONTHNAMES[ month ]
       end
       
+      def get_star_ratings
+        rating = @page.rating.to_f
+        rating = 0 if rating.nil?
+        
+        ratings = []
+        
+        if rating < 0 && rating > 5
+          rating = 0
+        end
+        
+        if rating > 5
+          rating = 5
+        end
+
+        # The base tag
+        # tag = "<img src=\"#{base_url}/images/ratings/%s\"  alt=\"%s\" />"
+
+        # htmlstr = String.new
+
+        # Get the rating difference to use against calculations
+        diff = ( '%.1f' % ( rating.to_f - rating.to_i ) ).to_f
+
+        # Be sure to catch all instances of the rating
+        if ( 0.1..0.5 ).include?( diff )
+          diff = 0.5
+        elsif ( 0.6..0.9 ).include?( diff )
+          diff = diff.round
+        end
+
+        ( 0..4 ).each do |i|
+          if i + diff < rating
+            # htmlstr << tag % [ "star-filled.png", rating.to_s + "/5"  ]
+            ratings.push "star-filled.png"
+          elsif diff == 0.5 && i + diff == rating
+            # htmlstr << tag % [ "star-half-filled.png", rating.to_s + "/5" ]
+            ratings.push "star-half-filled.png"
+          else
+            # htmlstr << tag % [ "star-empty.png", rating.to_s + "/5" ]
+            ratings.push "star-empty.png"
+          end
+        end
+        
+        # htmlstr
+        ratings    
+      end
+      
     end
    
     # Add new routes here.
@@ -120,7 +166,7 @@ module Nesta
        end
        items
     end
-    
+        
     def find_archived_content
       coll = {}
       Page.find_articles.reverse.each do |article|
@@ -141,6 +187,10 @@ module Nesta
         coll[ year ][ month ][ day ] += [ article ]
       end
       coll
+    end
+    
+    def rating
+      metadata("rating")
     end
   end
   

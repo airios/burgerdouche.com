@@ -9,3 +9,8 @@
               %a(href="#{category.abspath}")= category.heading
           - else
             %a(href="#{category.abspath}")= category.heading
+    - if !page.rating.nil?
+      .ratings
+        %h4 Our Rating
+        - get_star_ratings.each do |rating|
+          %img{:src => "#{base_url}/douchey/images/ratings/#{rating}", :width => "32", :height => "32", :alt => "#{rating}"}
