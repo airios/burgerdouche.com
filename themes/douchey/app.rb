@@ -104,11 +104,6 @@ module Nesta
           rating = 5
         end
 
-        # The base tag
-        # tag = "<img src=\"#{base_url}/images/ratings/%s\"  alt=\"%s\" />"
-
-        # htmlstr = String.new
-
         # Get the rating difference to use against calculations
         diff = ( '%.1f' % ( rating.to_f - rating.to_i ) ).to_f
 
@@ -121,18 +116,14 @@ module Nesta
 
         ( 0..4 ).each do |i|
           if i + diff < rating
-            # htmlstr << tag % [ "star-filled.png", rating.to_s + "/5"  ]
             ratings.push "star-filled.png"
           elsif diff == 0.5 && i + diff == rating
-            # htmlstr << tag % [ "star-half-filled.png", rating.to_s + "/5" ]
             ratings.push "star-half-filled.png"
           else
-            # htmlstr << tag % [ "star-empty.png", rating.to_s + "/5" ]
             ratings.push "star-empty.png"
           end
         end
         
-        # htmlstr
         ratings    
       end
       
