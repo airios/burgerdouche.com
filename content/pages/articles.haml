@@ -1,0 +1,23 @@
+%h1 Article Archives
+
+#archived-content
+  - unless get_archived_content.empty?
+    - 2020.downto(2008).each do |year|
+      - @year = year
+      - if @archived_pages[@year]
+        %h2.archive-year
+          ~ @year
+        - 12.downto(1).each do |month|
+          - @month = month
+          - if @archived_pages[@year][@month]
+            %h3.archive-month
+              = format_month @month
+            %ul.archive-entry
+              - 31.downto(1).each do |day|
+              - @day = day
+                - if @archived_pages[@year][@month][@day]
+                  - @archive_page = @archived_pages[@year][@month][@day]
+                  - @archive_page.each do |p|
+                    %li
+                      %a{:href => "#{p.abspath}"}
+                        ~ p.heading
