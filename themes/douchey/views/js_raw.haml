@@ -2,7 +2,9 @@
   <script language="Javascript" type="text/javascript">
     var webSearch;
 
-    $( function(){
+    $( init() );
+    
+    function init(){
       webSearch = new google.search.WebSearch();
         webSearch.setSearchCompleteCallback( this, webSearchComplete, [webSearch] );
         webSearch.setSiteRestriction( 'http://burgerdouche.com' );
@@ -16,8 +18,8 @@
           search( query );
         }
       }
-    });
-
+    };
+    
     function webSearchComplete ( searcher, searchNum ) 
     {
         var c = document.getElementById( 'search-results' );
@@ -42,7 +44,7 @@
 
         res.innerHTML += '<p class="archives"><a href="#{base_url}/articles/">View Archives</a></p>';
         c.appendChild( res );
-    }
+    };
 
     function search( query ) 
     {	
@@ -54,7 +56,7 @@
         $( "#search-results" ).hide();
       }
         webSearch.execute( query );
-    }
+    };
 		
     $( '#query' ).keyup( function(){
       var query = $( this ).val();
